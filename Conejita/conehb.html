@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+<meta charset="UTF-8">
+<title>CodePen - Happy birthday</title> 
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<style>
+/* Kaushan+Script, oregano, sail */
+@import url("https://fonts.cdnfonts.com/css/herlia");
+html, body, .container {
+  height: 100%;
+  font-family: 'Herlia', sans-serif;
+}
+
+body {
+ position: relative;
+ overflow: hidden;  <!-- /*Hidden the scroll*/ -->
+ padding: 0;
+ background: url('HBCONE.png')/*Wallpaper*/ center/cover fixed, #000
+}
+
+
+.merrywrap {
+  position: fixed;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+  background-color: #180027;
+  transition: background-color .5s ease;
+}
+
+.giftbox {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  left: 50%;
+  margin-left: -150px;
+  bottom: 40px;
+  z-index: 10;
+}
+.giftbox > div {
+  background: #f60068;
+  position: absolute;
+}
+.giftbox > div:after, .giftbox > div:before {
+  position: absolute;
+  content: "";
+  top: 0;
+}
+.giftbox:after {
+  position: absolute;
+  color: #fff2aa;
+  width: 100%;
+  content: "Click Me!";
+  left: 0;
+  bottom: 0;
+  font-size: 24px;
+  text-align: center;
+  transform: rotate(-20deg);
+  transform-origin: 0 0;
+}
+.giftbox .cover {
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 25%;
+  z-index: 2;
+}
+.giftbox .cover:before {
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  width: 50px;
+  transform: translateX(-50%);
+  background: #00edf6;
+}
+.giftbox .cover > div {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  top: -50px;
+  transform: translateX(-50%);
+}
+.giftbox .cover > div:before, .giftbox .cover > div:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  box-shadow: inset 0 0 0 15px #00edf6;
+  border-radius: 30px;
+  transform-origin: 50% 100%;
+}
+.giftbox .cover > div:before {
+  transform: translateX(-45%) skewY(40deg);
+}
+.giftbox .cover > div:after {
+  transform: translateX(45%) skewY(-40deg);
+}
+.giftbox .box {
+  right: 5%;
+  left: 5%;
+  height: 80%;
+  bottom: 0;
+}
+.giftbox .box:before {
+  width: 50px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00edf6;
+}
+.giftbox .box:after {
+  width: 100%;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.icons {
+  position: absolute;
+  left: 10px;
+  /*top:50%;
+  width: 100%;*/
+  height: auto;
+  transform: translateY(10px) rotate(-20deg);
+}
+.icons .row {
+  width: 100%;
+  text-align: center;
+}
+.icons .row span {
+  color: #e5e5e5;
+  text-shadow: 4px 4px 0 rgba(96, 125, 139, 0.4);
+  font-size: 50px;
+  display: inline-block;
+  opacity: 0;
+  transition: transform 0.5s ease-in, opacity 0.7s;
+}
+
+.step-1 .giftbox {
+  animation: wobble 0.5s linear infinite forwards;
+}
+.step-1 .cover {
+  animation: wobble 0.5s linear infinite  0.1s forwards;
+}
+.step-1 .icons .row span {
+  opacity: 1;
+}
+
+.step-2 .giftbox:after {
+  opacity: 0;
+}
+
+.step-3 .giftbox,
+.step-4 .giftbox {
+  opacity: 0;
+  z-index: 1;
+}
+.step-3 .giftbox:after,
+.step-4 .giftbox:after {
+  opacity: 0;
+}
+
+.step-2 .giftbox .cover {
+  animation: flyUp 0.4s ease-in forwards;
+}
+.step-2 .giftbox .box {
+  animation: flyDown 0.2s ease-in 0.05s forwards;
+}
+
+@keyframes wobble {
+  25% {
+    transform: rotate(4deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes flyUp {
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(20deg);
+    opacity: 0;
+  }
+}
+@keyframes flyDown {
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+.step-1 .icons .row span {
+  opacity: 0;
+}
+
+.step-1 .icons .row span:first-child {
+  transform: translateY(700%) translateX(600%);
+}
+
+.step-1 .icons .row span:nth-child(2) {
+  transform: translateY(700%) translateX(500%);
+}
+
+.step-1 .icons .row span:nth-child(3) {
+  transform: translateY(700%) translateX(400%);
+}
+
+.step-1 .icons .row span:nth-child(4) {
+  transform: translateY(700%) translateX(300%);
+}
+
+.step-1 .icons .row span:nth-child(5) {
+  transform: translateY(700%) translateX(200%);
+}
+
+.step-1 .icons .row span:nth-child(6) {
+  transform: translateY(700%) translateX(100%);
+}
+
+.step-1 .icons .row span:nth-child(7) {
+  transform: translateY(700%) translateX(0);
+}
+
+.step-1 .icons .row span:nth-child(8) {
+  transform: translateY(700%) translateX(-100%);
+}
+
+.step-1 .icons .row span:nth-child(9) {
+  transform: translateY(700%) translateX(-200%);
+}
+
+.step-1 .icons .row span:nth-child(10) {
+  transform: translateY(700%) translateX(-300%);
+}
+
+.step-1 .icons .row span:nth-child(11) {
+  transform: translateY(700%) translateX(-400%);
+}
+
+.step-1 .icons .row span:nth-child(12) {
+  transform: translateY(700%) translateX(-500%);
+}
+
+.step-1 .icons .row span:nth-child(13) {
+  transform: translateY(700%) translateX(-600%);
+}
+
+.step-2 .icons .row span:nth-child(2) {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+.step-2 .icons .row span:nth-child(3) {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+
+.step-2 .icons .row span:nth-child(4) {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+.step-2 .icons .row span:nth-child(5) {
+  -webkit-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+
+.step-2 .icons .row span:nth-child(6) {
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+.step-2 .icons .row span:nth-child(7) {
+  -webkit-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+
+.step-2 .icons .row span:nth-child(8) {
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.step-2 .icons .row span:nth-child(9) {
+  -webkit-transition-delay: 0.45s;
+  transition-delay: 0.45s;
+}
+
+.step-2 .icons .row span:nth-child(10) {
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.step-2 .icons .row span:nth-child(11) {
+  -webkit-transition-delay: 0.55s;
+  transition-delay: 0.55s;
+}
+
+.step-2 .icons .row span:nth-child(12) {
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+}
+
+.step-2 .icons .row span:nth-child(13) {
+  -webkit-transition-delay: 0.65s;
+  transition-delay: 0.65s;
+}
+
+.step-2 .icons span, .step-3 .icons span, .step-4 .icons span {
+  opacity: 1;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 0.91);
+}
+
+.step-4 .icons .row span, .step-3 .icons .row span {
+  /*animation: wobble 0.6s linear infinite forwards;*/
+  color: #26ff82;
+  animation: neon .08s ease-in-out infinite alternate;
+}
+
+.step-4 .icons .row span:nth-child(even), .step-3 .icons .row span:nth-child(even) {
+  animation-duration: 0.7s;
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 6px rgba(33, 221, 225, 0.92), 0 0 30px rgba(33, 221, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78), 0 0 54px rgba(30, 132, 242, 0.92);
+  }
+  to {
+    text-shadow: 0 0 6px rgba(33, 221, 225, 0.98), 0 0 30px rgba(33, 221, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58), 0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88), 0 0 60px #1e84f2;
+  }
+}
+
+@media (min-width: 1000px) {
+  .icons {
+    left: 30px;
+  }
+
+  .icons .row span {
+    font-size: 56px;
+  }
+
+.gift-from {
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  color: white;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+<canvas id="canvas"></canvas>
+
+<div id="merrywrap" class="merrywrap">
+  <div class="giftbox">
+    <div class="cover">
+      <div></div>
+    </div>
+    <div class="box"></div>
+  </div>
+  <div class="icons">
+    <div class="row"> 
+      <span>♥ H</span>
+      <span>a</span>
+      <span>p</span>
+      <span>p</span>
+      <span>y</span>
+    </div>
+    <div class="row"> 
+      <span>B</span>
+      <span>i</span>
+      <span>r</span>
+      <span>t</span>
+      <span>h</span>
+      <span>d</span>
+      <span>a</span>
+      <span>y</span>
+     
+    </div>
+        <div class="row"> 
+      <span>Mi </span>
+      <span>C</span>
+      <span>o</span>
+      <span>n</span>
+	   <span>e</span>
+      <span>j</span>
+      <span>i</span>
+	   <span>t</span>
+      <span>a ♥</span>
+     
+    </div>
+ 
+  </div>
+</div> 
+
+
+
+
+  
+  
+      <script id="rendered-js" >
+	  
+	  
+/*
+Everybody say Happy Birthday! This gift is a compound of various pens plus some other things I added
+- gift 
+https://codepen.io/ElaineXu/pen/EWvGWX
+- neon 
+https://codepen.io/markheggan/pen/LjrVYN
+- fireworks 
+https://codepen.io/chuongdang/pen/yzpDG
+- moon 
+https://codepen.io/agelber/pen/sjIKp
+-edited pen
+https://codepen.io/saiwaihlyantun/pen/MZMwgy
+*/
+window.requestAnimFrame = function () {
+  return window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  function (callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
+}();
+
+// now we will setup our basic variables for the demo
+var canvas = document.getElementById('canvas'),
+ctx = canvas.getContext('2d'),
+// full screen dimensions
+cw = window.innerWidth,
+ch = window.innerHeight,
+
+// firework collection
+fireworks = [],
+// particle collection
+particles = [],
+// starting hue
+hue = 120,
+// when launching fireworks with a click, too many get launched at once without a limiter, one launch per 5 loop ticks
+limiterTotal = 5,
+limiterTick = 0,
+// this will time the auto launches of fireworks, one launch per 80 loop ticks
+timerTotal = 80,
+timerTick = 0,
+mousedown = false,
+// mouse x coordinate,
+mx,
+// mouse y coordinate
+my;
+
+// set canvas dimensions
+canvas.width = cw;
+canvas.height = ch;
+
+// now we are going to setup our function placeholders for the entire demo
+
+// get a random number within a range
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// calculate the distance between two points
+function calculateDistance(p1x, p1y, p2x, p2y) {
+  var xDistance = p1x - p2x,
+  yDistance = p1y - p2y;
+  return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+}
+
+
+
+
+window.onload = function () {
+  var merrywrap = document.getElementById("merrywrap");
+  var box = merrywrap.getElementsByClassName("giftbox")[0];
+  var step = 1;
+  var stepMinutes = [2000, 2000, 1000, 1000];
+  function init() {
+    box.addEventListener("click", openBox, false);
+  }
+  function stepClass(step) {
+    merrywrap.className = 'merrywrap';
+    merrywrap.className = 'merrywrap step-' + step;
+  }
+  function openBox() {
+    if (step === 1) {
+      box.removeEventListener("click", openBox, false);
+    }
+    stepClass(step);
+    if (step === 3) {
+    }
+    if (step === 4) {
+      reveal();
+      return;
+    }
+    setTimeout(openBox, stepMinutes[step - 1]);
+    step++;
+  }
+
+  init();
+
+};
+
+function reveal() {
+  document.querySelector('.merrywrap').style.backgroundColor = 'transparent';
+
+  loop();
+
+  var w, h;
+  if (window.innerWidth >= 1000) {
+    w = 295;h = 185;
+  } else
+  {
+    w = 255;h = 155;
+  }
+
+  var ifrm = document.createElement("iframe");
+  ifrm.setAttribute();
+  //ifrm.style.width = `${w}px`;
+  //ifrm.style.height = `${h}px`;
+  ifrm.style.border = 'none';
+  document.querySelector('#video').appendChild(ifrm);
+}
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
