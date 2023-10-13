@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+  <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+  <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+  
+  <title>CodePen - Audio bars music controller for auto-playing website background music</title>
+  
+  
+  
+  
+<style>
+.music-player {
+  width: 75px;
+  height: 50px;
+  position: relative;
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.music-player.music-player--disabled {
+  opacity: 0.26;
+}
+.music-player__wrapper {
+  position: fixed;
+  right: 2rem;
+  bottom: 1.5rem;
+}
+.music-player__button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1;
+  width: 100%;
+  border: 0;
+}
+.music-player__play {
+  background: transparent;
+  display: none;
+}
+.music-player--disabled .music-player__play {
+  display: block;
+}
+.music-player--disabled .music-player__pause {
+  display: none;
+}
+.music-player__bar {
+  background: #fff;
+  width: 10px;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  animation-name: music-bar-anim;
+  animation-iteration-count: infinite;
+}
+.music-player--disabled .music-player__bar {
+  animation-play-state: paused;
+}
+.music-player__bar1 {
+  animation-duration: 1.3s;
+  left: 0;
+}
+.music-player__bar2 {
+  animation-duration: 1.8s;
+  left: 15px;
+}
+.music-player__bar3 {
+  animation-duration: 2.2s;
+  left: 30px;
+}
+.music-player__bar4 {
+  animation-duration: 2s;
+  left: 45px;
+}
+.music-player__bar5 {
+  animation-duration: 1.5s;
+  left: 75px;
+}
+@keyframes music-bar-anim {
+  0% {
+    height: 10px;
+  }
+  50% {
+    height: 50px;
+  }
+  100% {
+    height: 10px;
+  }
+}
+
+.sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div class="music-player__wrapper">
+
+  <div class="music-player" id="music-container">
+    <audio id="audio-player" autoplay loop>
+      <source src="RR.mp3" type="audio/mpeg">
+      <p class="sr-only">Your browser does not support the audio element.</p>
+    </audio>
+
+    <div class="music-player__bar music-player__bar1"></div>
+    <div class="music-player__bar music-player__bar2"></div>
+    <div class="music-player__bar music-player__bar3"></div>
+    <div class="music-player__bar music-player__bar4"></div>
+
+    <button onclick="playMusic()" class="music-player__button music-player__play">
+      <span class="sr-only">Play</span>
+    </button>
+    <button onclick="pauseMusic()" class="music-player__button music-player__pause">
+      <span class="sr-only">Pause</span>
+    </button>
+  </div>
+
+</div>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
+      <script id="rendered-js" >
+function pauseMusic() {
+
+  var audioPlayer = document.getElementById('audio-player');
+  var audioContainer = $('#music-container');
+
+  audioPlayer.pause();
+  audioContainer.addClass("music-player--disabled");
+
+  console.log("pause music");
+}
+
+function playMusic() {
+
+  var audioPlayer = document.getElementById('audio-player');
+  var audioContainer = $('#music-container');
+
+  audioPlayer.play();
+  audioContainer.removeClass("music-player--disabled");
+
+  console.log("play music");
+}
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
