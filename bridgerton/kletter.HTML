@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+<meta charset="UTF-8">
+<title>H-B CUKI</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="author" content="Robert - xat.com/DiverZone">
+
+<style>
+ body {
+
+ overflow: hidden;  <!-- /*Hidden the scroll*/ -->
+ padding: 0;
+ background: url('CGR1.png')/*Wallpaper*/ center/cover fixed, #000
+}
+
+
+#flowerDraw {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.flower {
+  position: absolute;
+  transform: scale(0.5);
+  pointer-events: none;
+  animation: fade-in-out1 5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fade-in-out1 {
+  0% {
+    transform: scale(0.5) translate(-20px, -20px) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(1) translate(20px, 0px) rotate(-50deg);
+    opacity: 1;
+  }
+  65% {
+    transform: scale(1) translate(-20px, 50px) rotate(50deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) translate(20px, 100px) rotate(0deg);
+    opacity: 0;
+  }
+}
+@keyframes fade-in-out2 {
+  0% {
+    transform: scale(0.5) translate(50px, -50px) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) translate(-50px, 50px) rotate(50deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) translate(50px, 80px) rotate(0deg);
+    opacity: 0;
+  }
+}
+@keyframes fade-in-out3 {
+  0% {
+    transform: scale(0.5) translate(30px, -10px) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(1) translate(-30px, 0px) rotate(50deg);
+    opacity: 1;
+  }
+  65% {
+    transform: scale(1) translate(50px, 30px) rotate(-50deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) translate(-50px, 60px) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+</style>
+
+<style>
+.music-player {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.music-player.music-player--disabled {
+  opacity: 0.26;
+}
+.music-player__wrapper {
+  position: above;
+  padding: 50px;
+  bottom: 0.5rem;
+}
+.music-player__button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1;
+  width: 100%;
+  border: 0;
+}
+.music-player__play {
+  background: transparent;
+  display: none;
+}
+.music-player--disabled .music-player__play {
+  display: block;
+}
+.music-player--disabled .music-player__pause {
+  display: none;
+}
+.music-player__bar {
+  background: #fff;
+  width: 10px;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  animation-name: music-bar-anim;
+  animation-iteration-count: infinite;
+}
+.music-player--disabled .music-player__bar {
+  animation-play-state: paused;
+}
+.music-player__bar1 {
+  animation-duration: 1.3s;
+  left: 0;
+}
+.music-player__bar2 {
+  animation-duration: 1.8s;
+  left: 15px;
+}
+.music-player__bar3 {
+  animation-duration: 2.2s;
+  left: 30px;
+}
+.music-player__bar4 {
+  animation-duration: 2s;
+  left: 45px;
+}
+.music-player__bar5 {
+  animation-duration: 1.5s;
+  left: 75px;
+}
+@keyframes music-bar-anim {
+  0% {
+    height: 10px;
+  }
+  50% {
+    height: 50px;
+  }
+  100% {
+    height: 10px;
+  }
+}
+
+.sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+
+</style>
+
+
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <html><head>
+<meta charset="utf-8">
+<title>Site</title>
+  <link href="https://www.jqueryscript.net/demo/jQuery-Plugin-For-Sakura-Petals-Falling-Animation-Sakura/jquery-sakura.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-For-Sakura-Petals-Falling-Animation-Sakura/jquery-sakura.min.js"></script>
+<link href="jquery-sakura.css" rel="stylesheet" type="text/css">
+
+<div id="flowerDraw"></div>
+ </head>
+ 
+ 
+<head>
+<div class="music-player__wrapper">
+
+  <div class="music-player" id="music-container">
+    <audio id="audio-player" autoplay loop>
+      <source src="BS.mp3" type="audio/mp3">
+      <p class="sr-only">Your browser does not support the audio element.</p>
+    </audio>
+
+    <div class="music-player__bar music-player__bar1"></div>
+    <div class="music-player__bar music-player__bar2"></div>
+    <div class="music-player__bar music-player__bar3"></div>
+    <div class="music-player__bar music-player__bar4"></div>
+
+    <button onclick="playMusic()" class="music-player__button music-player__play">
+      <span class="sr-only">Play</span>
+    </button>
+    <button onclick="pauseMusic()" class="music-player__button music-player__pause">
+      <span class="sr-only">Pause</span>
+    </button>
+  </div>
+  </head>
+
+
+  
+  
+  </body>
+ </html>
+ 
+ 
+  
+      <script id="rendered-js" >
+$(window).load(function () {
+  $('body').sakura();
+});
+//# sourceURL=pen.js
+    </script>
+	
+	 <script id="rendered-js" >
+const container = document.getElementById("flowerDraw");
+let isMouseOver = false;
+
+function getOffset(el) {
+  const rect = el.getBoundingClientRect();
+  return {
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY };
+
+}
+
+function throttle(func, delay) {
+  let lastCall = 0;
+  return function (...args) {
+    const now = performance.now();
+    if (now - lastCall < delay) {
+      return;
+    }
+    lastCall = now;
+    return func(...args);
+  };
+}
+
+container.addEventListener("mouseenter", () => {
+  isMouseOver = true;
+});
+
+container.addEventListener("mouseleave", () => {
+  isMouseOver = false;
+});
+
+const imageURLs = [
+"https://uploads-ssl.webflow.com/6438a9121fe51001c82c7326/64401341049f304366c82e43_Union%20(5).svg",
+"https://uploads-ssl.webflow.com/6438a9121fe51001c82c7326/644013403d6ee30e4915bba1_Union%20(4).svg",
+"https://uploads-ssl.webflow.com/6438a9121fe51001c82c7326/6440134056a3518ca9c74317_Union%20(3).svg"];
+
+
+function getRandomImage() {
+  return imageURLs[Math.floor(Math.random() * imageURLs.length)];
+}
+
+function getRandomAnimation() {
+  const animations = ['fade-in-out1', 'fade-in-out2', 'fade-in-out3'];
+  return animations[Math.floor(Math.random() * animations.length)];
+}
+
+document.addEventListener(
+"mousemove",
+throttle(event => {
+  if (!isMouseOver) {
+    return;
+  }
+
+  const flower = document.createElement("img");
+
+  flower.src = getRandomImage();
+  flower.classList.add("flower");
+
+  const size = Math.floor(Math.random() * 20) + 10;
+  const offset = getOffset(container);
+  const x = event.pageX - offset.left;
+  const y = event.pageY - offset.top;
+
+  flower.style.width = `${size}px`;
+  flower.style.height = `${size}px`;
+  flower.style.top = `${y}px`;
+  flower.style.left = `${x}px`;
+
+  const animation = getRandomAnimation();
+  flower.style.animationName = animation;
+
+  container.appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 5000);
+}, 50));
+//# sourceURL=pen.js
+</script>
+
+  
+</body>
+
+</html>
